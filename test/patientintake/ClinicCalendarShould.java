@@ -4,6 +4,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
@@ -63,10 +64,11 @@ class ClinicCalendarShould {
 	@Test
 	public void returnCurrentDaysAppointments() {
 		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
-		calendar.addAppointment("Jim", "Weaver", "avery", "04/23/2021 02:00 pm");
-		calendar.addAppointment("Muhammad", "Saad", "Johnson", "04/23/2021 02:00 pm");
-		calendar.addAppointment("Jimmy", "Weaver", "avery", "04/23/2021 02:00 pm");
+		calendar.addAppointment("Jim", "Weaver", "avery", "today 02:00 pm");
+		calendar.addAppointment("Muhammad", "Saad", "Johnson", "today 02:00 pm");
+		calendar.addAppointment("Jimmy", "Weaver", "avery", "today 02:00 pm");
 		assertEquals(3, calendar.getTodayAppointments().size());
+		assertIterableEquals(calendar.getTodayAppointments(), calendar.getAppointments());
 	}
 
 }
