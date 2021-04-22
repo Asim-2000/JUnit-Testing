@@ -1,9 +1,12 @@
 package patientintake;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -13,7 +16,7 @@ class ClinicCalendarShould {
 
 	@Test
 	public void allowEntryofAppointment() {
-		ClinicCalendar calender = new ClinicCalendar();
+		ClinicCalendar calender = new ClinicCalendar(LocalDate.now());
 		calender.addAppointment("Jim", "Weaver", "avery", "9/1/2020 08:00 pm");
 		List<PatientAppointment> appointments = calender.getAppointments();
 
@@ -42,4 +45,18 @@ class ClinicCalendarShould {
 
 	}
 
+	@Test
+	public void returnTrueForHasAppointmentsIfThereAreAppointments() {
+		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
+		calendar.addAppointment("Jim", "Weaver", "avery", "09/02/2020 02:00 pm");
+		assertTrue(calendar.hasAppointment(LocalDate.of(2020, 9, 2)));
+
+	}
+
+	@Test
+	public void returnFalseForHasAppointmentsIfThereAreNoAppointments() {
+		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
+		assertFalse(calendar.hasAppointment(LocalDate.of(2020, 9, 2)));
+
+	}
 }
