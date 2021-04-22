@@ -59,4 +59,14 @@ class ClinicCalendarShould {
 		assertFalse(calendar.hasAppointment(LocalDate.of(2020, 9, 2)));
 
 	}
+
+	@Test
+	public void returnCurrentDaysAppointments() {
+		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
+		calendar.addAppointment("Jim", "Weaver", "avery", "04/23/2021 02:00 pm");
+		calendar.addAppointment("Muhammad", "Saad", "Johnson", "04/23/2021 02:00 pm");
+		calendar.addAppointment("Jimmy", "Weaver", "avery", "04/23/2021 02:00 pm");
+		assertEquals(3, calendar.getTodayAppointments().size());
+	}
+
 }
