@@ -9,15 +9,31 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class ClinicCalendarShould {
 
+	private ClinicCalendar calender;
+
+	@BeforeAll
+	static void testClassSetup(){
+		System.out.println("Before All...");
+	}
+
+	//before each executes before each test method
+	@BeforeEach
+	void init(){
+		System.out.println("Before Each ...");
+		//field declared in Class
+		//Initializing the ClinicCalender Object before each test method as it is a repeatitive action
+		calender = new ClinicCalendar(LocalDate.of(2021,4,23));
+	}
+
 	@Test
 	public void allowEntryofAppointment() {
-		ClinicCalendar calender = new ClinicCalendar(LocalDate.now());
 		calender.addAppointment("Jim", "Weaver", "avery", "9/1/2020 08:00 pm");
 		List<PatientAppointment> appointments = calender.getAppointments();
 
@@ -48,27 +64,34 @@ class ClinicCalendarShould {
 
 	@Test
 	public void returnTrueForHasAppointmentsIfThereAreAppointments() {
-		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
-		calendar.addAppointment("Jim", "Weaver", "avery", "09/02/2020 02:00 pm");
-		assertTrue(calendar.hasAppointment(LocalDate.of(2020, 9, 2)));
+		calender.addAppointment("Jim", "Weaver", "avery", "09/02/2020 02:00 pm");
+		assertTrue(calender.hasAppointment(LocalDate.of(2020, 9, 2)));
 
 	}
 
 	@Test
 	public void returnFalseForHasAppointmentsIfThereAreNoAppointments() {
-		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
-		assertFalse(calendar.hasAppointment(LocalDate.of(2020, 9, 2)));
+		assertFalse(calender.hasAppointment(LocalDate.of(2020, 9, 2)));
 
 	}
 
 	@Test
 	public void returnCurrentDaysAppointments() {
-		ClinicCalendar calendar = new ClinicCalendar(LocalDate.now());
-		calendar.addAppointment("Jim", "Weaver", "avery", "today 02:00 pm");
-		calendar.addAppointment("Muhammad", "Saad", "Johnson", "today 02:00 pm");
-		calendar.addAppointment("Jimmy", "Weaver", "avery", "today 02:00 pm");
-		assertEquals(3, calendar.getTodayAppointments().size());
-		assertIterableEquals(calendar.getTodayAppointments(), calendar.getAppointments());
+
+		calender.addAppointment("Jim", "Weaver", "avery", "today 02:00 pm");
+		calender.addAppointment("Muhammad", "Saad", "Johnson", "today 02:00 pm");
+		calender.addAppointment("Jimmy", "Weaver", "avery", "today 02:00 pm");
+		assertEquals(3, calender.getTodayAppointments().size());
+		assertIterableEquals(calender.getTodayAppointments(), calender.getAppointments());
 	}
 
+	@AfterEach
+	void TearDownEachTest(){
+		System.out.println("After Each ...");
+	}
+
+	@AfterAll
+	static void TearDownTestClass(){
+		System.out.print("After All ...");
+	}
 }
