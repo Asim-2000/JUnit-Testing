@@ -2,7 +2,7 @@ package patientintake;
 
 import java.time.LocalDateTime;
 
-public class PatientAppointment {
+public class PatientAppointment extends DateTimeConverter {
 
    private String patientFirstName;
    private String patientLastName;
