@@ -6,7 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-public class DateTimeConverter {
+public class ConversionDateTime {
 
     public static LocalDateTime convertStringToDate(String dateTime, LocalDate today){
         LocalDateTime localDateTime;

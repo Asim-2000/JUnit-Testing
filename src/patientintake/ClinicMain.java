@@ -7,10 +7,10 @@ import java.util.Scanner;
 
 public class ClinicMain {
 
-	private static ClinicCalendar calendar;
+	private static DocCalendar calendar;
 
 	public static void main(String[] args) throws Throwable {
-		calendar = new ClinicCalendar(LocalDate.now());
+		calendar = new DocCalendar(LocalDate.now());
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to the Patient Intake Computer System!\n\n");
 		String lastOption = "";
@@ -80,8 +80,8 @@ public class ClinicMain {
 		System.out.println("\n\n");
 	}
 
-	private static void listAppointments(List<PatientAppointment> appointments) {
-		for (PatientAppointment appointment : appointments) {
+	private static void listAppointments(List<Appointments> appointments) {
+		for (Appointments appointment : appointments) {
 			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy hh:mm a");
 			String apptTime = formatter.format(appointment.getAppointmentDateTime());
 			System.out.println(String.format("%s:  %s, %s\t\tDoctor: %s", apptTime, appointment.getPatientLastName(),

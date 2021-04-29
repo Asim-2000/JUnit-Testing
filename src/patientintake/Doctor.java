@@ -1,9 +1,9 @@
 package patientintake;
 
 public enum Doctor {
-   avery("Ralph Avery"),
-   johnson("Beth Johnson"),
-   murphy("Pat Murpy");
+   Asim("Muhammad Asim Khaskheli"),
+   Ali("Ali Mehmood"),
+   Ismail("Muhammad Ismail");
 
    private String name;
 

@@ -13,9 +13,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.*;
 
-class ClinicCalendarShould {
+class DocCalendarShould {
 
-	private ClinicCalendar calender;
+	private DocCalendar calender;
 
 	@BeforeAll
 	static void testClassSetup(){
@@ -28,13 +28,13 @@ class ClinicCalendarShould {
 		System.out.println("Before Each ...");
 		//field declared in Class
 		//Initializing the ClinicCalender Object before each test method as it is a repeatitive action
-		calender = new ClinicCalendar(LocalDate.of(2021,4,23));
+		calender = new DocCalendar(LocalDate.of(2021,4,23));
 	}
 
 	@Test
 	public void allowEntryofAppointment() {
 		calender.addAppointment("Jim", "Weaver", "avery", "9/1/2020 08:00 pm");
-		List<PatientAppointment> appointments = calender.getAppointments();
+		List<Appointments> appointments = calender.getAppointments();
 
 		// Testing if the list is not empty
 		assertNotNull(appointments);
@@ -43,7 +43,7 @@ class ClinicCalendarShould {
 		assertEquals(1, appointments.size());
 
 		// get the data of the first entry in the List
-		PatientAppointment enteredAppointment = appointments.get(0);
+		Appointments enteredAppointment = appointments.get(0);
 
 		// Testing if the first name of the patient is equal to the expected first name
 		assertEquals("Jim", enteredAppointment.getPatientFirstName());

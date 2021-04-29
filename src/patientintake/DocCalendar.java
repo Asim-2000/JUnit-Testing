@@ -2,27 +2,24 @@ package patientintake;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class ClinicCalendar {
+public class DocCalendar {
 
-	private List<PatientAppointment> appointments;
+	private List<Appointments> appointments;
 	private LocalDate today;
 
-	public ClinicCalendar(LocalDate today) {
+	public DocCalendar(LocalDate today) {
 		this.appointments = new ArrayList<>();
 		this.today = today;
 	}
 
 	public void addAppointment(String patientFirstName, String patientLastName, String doctorKey, String dateTime) {
 		Doctor doc = Doctor.valueOf(doctorKey.toLowerCase());
-		LocalDateTime localDateTime = DateTimeConverter.convertStringToDate(dateTime,today);
-		PatientAppointment appointment = new PatientAppointment(patientFirstName, patientLastName, localDateTime, doc);
+		LocalDateTime localDateTime = ConversionDateTime.convertStringToDate(dateTime,today);
+		Appointments appointment = new Appointments(patientFirstName, patientLastName, localDateTime, doc);
 		appointments.add(appointment);
 	}
 
@@ -30,11 +27,11 @@ public class ClinicCalendar {
 //
 //	}
 
-	public List<PatientAppointment> getAppointments() {
+	public List<Appointments> getAppointments() {
 		return this.appointments;
 	}
 
-	public List<PatientAppointment> getTodayAppointments() {
+	public List<Appointments> getTodayAppointments() {
 		return appointments.stream().filter(appt -> appt.getAppointmentDateTime().toLocalDate().equals(today))
 				.collect(Collectors.toList());
 	}
