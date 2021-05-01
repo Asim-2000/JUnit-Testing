@@ -1,16 +1,16 @@
-package patientintake;
+package appointments;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
-public class ClinicMain {
+public class MainClass {
 
-	private static ClinicCalendar calendar;
+	private static DocCalendar calendar;
 
 	public static void main(String[] args) throws Throwable {
-		calendar = new ClinicCalendar(LocalDate.now());
+		calendar = new DocCalendar(LocalDate.now());
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to the Patient Intake Computer System!\n\n");
 		String lastOption = "";

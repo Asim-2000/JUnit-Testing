@@ -1,4 +1,4 @@
-package patientintake;
+package appointments;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
 
-public class ClinicCalendar {
+public class DocCalendar {
 
 	private List<PatientAppointment> appointments;
 	private LocalDate today;
 
-	public ClinicCalendar(LocalDate today) {
+	public DocCalendar(LocalDate today) {
 		this.appointments = new ArrayList<>();
 		this.today = today;
 	}

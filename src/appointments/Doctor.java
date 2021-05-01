@@ -1,9 +1,9 @@
-package patientintake;
+package appointments;
 
 public enum Doctor {
-   avery("Ralph Avery"),
-   johnson("Beth Johnson"),
-   murphy("Pat Murpy");
+   avery("Averios Michael"),
+   asim("Muhammad Asim"),
+   ali("Ali Mehmood");
 
    private String name;
 
