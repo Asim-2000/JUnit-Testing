@@ -1,4 +1,4 @@
-package patientintake;
+package appointments;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertSame;
@@ -11,12 +11,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import appointments.DocCalendar;
-import appointments.Doctor;
-import appointments.PatientAppointment;
 import org.junit.jupiter.api.*;
 
-class DocCalendarShould {
+class DocCalendarShouldTest {
 
 	private DocCalendar calender;
 

@@ -1,6 +1,5 @@
-package patientintake;
+package appointments;
 
-import appointments.ConversionofdateTime;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
