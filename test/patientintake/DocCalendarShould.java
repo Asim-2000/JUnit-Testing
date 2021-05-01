@@ -9,14 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.List;
 
+import appointments.DocCalendar;
+import appointments.Doctor;
+import appointments.PatientAppointment;
 import org.junit.jupiter.api.*;
 
-class ClinicCalendarShould {
+class DocCalendarShould {
 
-	private ClinicCalendar calender;
+	private DocCalendar calender;
 
 	@BeforeAll
 	static void testClassSetup(){
@@ -29,7 +31,7 @@ class ClinicCalendarShould {
 		System.out.println("Before Each ...");
 		//field declared in Class
 		//Initializing the ClinicCalender Object before each test method as it is a repeatitive action
-		calender = new ClinicCalendar(LocalDate.of(2021,4,23));
+		calender = new DocCalendar(LocalDate.of(2021,4,23));
 	}
 
 	@Test
@@ -78,9 +80,9 @@ class ClinicCalendarShould {
 	@Test
 	public void returnCurrentDaysAppointments() {
 
-		calender.addAppointment("Jim", "Weaver", "avery", "today 02:00 pm");
-		calender.addAppointment("Muhammad", "Saad", "Johnson", "today 02:00 pm");
-		calender.addAppointment("Jimmy", "Weaver", "avery", "today 02:00 pm");
+		calender.addAppointment("Jimmy", "Bravo", "avery", "today 02:00 pm");
+		calender.addAppointment("Muhammad", "Saad", "asim", "today 02:00 pm");
+		calender.addAppointment("Michael", "Shawn", "avery", "today 02:00 pm");
 		assertEquals(3, calender.getTodayAppointments().size());
 		assertIterableEquals(calender.getTodayAppointments(), calender.getAppointments());
 	}

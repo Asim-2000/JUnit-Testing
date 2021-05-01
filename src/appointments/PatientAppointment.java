@@ -1,8 +1,8 @@
-package patientintake;
+package appointments;
 
 import java.time.LocalDateTime;
 
-public class PatientAppointment extends DateTimeConverter {
+public class PatientAppointment extends ConversionofdateTime {
 
    private String patientFirstName;
    private String patientLastName;
